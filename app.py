@@ -1,5 +1,5 @@
 import streamlit as st
-from data import ARTIGOS_ESTATUTO, RUAS_BOM_RETIRO
+from data import ARTIGOS_ESTATUTO, RUAS_BOM_RETIRO, NOTAS_FIM_CAPITULO
 import os
 # pyrefly: ignore [missing-import]
 from libsql_client import create_client_sync
@@ -69,6 +69,21 @@ def upload_audio_to_cloud(audio_bytes):
         st.error(f"Erro ao enviar áudio para o Supabase: {e}")
         return f"https://armazenamento-nuvem.com/amabre/error_{os.urandom(4).hex()}.wav"
 
+# --- FUNÇÃO PARA PROCESSAR AVANÇO E FIM DE CAPÍTULO ---
+def processar_avanco(indice, artigo, total_artigos, total_no_capitulo, posicao_no_capitulo):
+    tem_notas = artigo['capitulo'] in NOTAS_FIM_CAPITULO
+    if posicao_no_capitulo == total_no_capitulo and tem_notas:
+        st.session_state.capitulo_concluido = artigo['capitulo']
+        st.session_state.proximo_artigo_indice = indice + 1 if indice + 1 < total_artigos else None
+        st.session_state.passo = "fim_capitulo"
+    else:
+        if indice + 1 < total_artigos:
+            st.session_state.artigo_atual = indice + 1
+            st.session_state.passo = "revisao"
+        else:
+            st.session_state.artigo_atual = 0
+            st.session_state.passo = "obrigado"
+
 # --- INICIALIZAÇÃO DO ESTADO DE SESSÃO ---
 if "passo" not in st.session_state:
     st.session_state.passo = "cadastro"
@@ -80,6 +95,10 @@ if "usuario_nome" not in st.session_state:
     st.session_state.usuario_nome = ""
 if "fonte_grande" not in st.session_state:
     st.session_state.fonte_grande = False
+if "capitulo_concluido" not in st.session_state:
+    st.session_state.capitulo_concluido = None
+if "proximo_artigo_indice" not in st.session_state:
+    st.session_state.proximo_artigo_indice = None
 
 # --- DADOS DO ESTATUTO IMPORTADOS DE DATA.PY ---
 # ARTIGOS_ESTATUTO e RUAS_BOM_RETIRO são carregados dinamicamente do data.py
@@ -164,8 +183,13 @@ elif st.session_state.passo == "revisao":
     indice = st.session_state.artigo_atual
     artigo = ARTIGOS_ESTATUTO[indice]
     
+    # Filtra os artigos do capítulo atual e calcula progresso interno
+    artigos_do_capitulo = [a for a in ARTIGOS_ESTATUTO if a['capitulo'] == artigo['capitulo']]
+    total_no_capitulo = len(artigos_do_capitulo)
+    posicao_no_capitulo = artigos_do_capitulo.index(artigo) + 1
+    
     st.progress(indice / total_artigos)
-    st.caption(f"Item {indice + 1} de {total_artigos} | {artigo['capitulo']}")
+    st.caption(f"Artigo {posicao_no_capitulo} de {total_no_capitulo} do {artigo['capitulo']} | Progresso Geral: {indice + 1} de {total_artigos}")
     
     st.markdown(f"<div class='titulo-artigo'>{artigo['titulo']}</div>", unsafe_allow_html=True)
     st.markdown(f"""
@@ -222,9 +246,8 @@ elif st.session_state.passo == "revisao":
             )
             
             del st.session_state.sugestao_ativa
-            st.session_state.artigo_atual = st.session_state.artigo_atual + 1 if st.session_state.artigo_atual + 1 < total_artigos else 0
-            st.session_state.passo = "obrigado" if st.session_state.artigo_atual == 0 else "revisao"
             st.success("Áudio gravado e enviado com sucesso!")
+            processar_avanco(indice, artigo, total_artigos, total_no_capitulo, posicao_no_capitulo)
             st.rerun()
             
         if st.button("Enviar Sugestão por Texto ➡️", key=f"env_txt_{indice}", type="primary"):
@@ -238,8 +261,7 @@ elif st.session_state.passo == "revisao":
                 (st.session_state.usuario_id, artigo['id'], artigo['titulo'], "Rejeitado/Alterar", comentario_texto, None)
             )
             del st.session_state.sugestao_ativa
-            st.session_state.artigo_atual = st.session_state.artigo_atual + 1 if st.session_state.artigo_atual + 1 < total_artigos else 0
-            st.session_state.passo = "obrigado" if st.session_state.artigo_atual == 0 else "revisao"
+            processar_avanco(indice, artigo, total_artigos, total_no_capitulo, posicao_no_capitulo)
             st.rerun()
 
     elif voto_selecionado in ["Concordo", "Pulei"]:
@@ -252,9 +274,56 @@ elif st.session_state.passo == "revisao":
             "INSERT INTO respostas (usuario_id, artigo_id, titulo_artigo, voto, comentario, audio_url) VALUES (?, ?, ?, ?, ?, ?)",
             (st.session_state.usuario_id, artigo['id'], artigo['titulo'], voto_selecionado, "", None)
         )
-        st.session_state.artigo_atual = st.session_state.artigo_atual + 1 if st.session_state.artigo_atual + 1 < total_artigos else 0
-        st.session_state.passo = "obrigado" if st.session_state.artigo_atual == 0 else "revisao"
+        processar_avanco(indice, artigo, total_artigos, total_no_capitulo, posicao_no_capitulo)
         st.rerun()
+
+    # Exibe o texto antigo de referência em cinza no final do card
+    st.write("---")
+    st.markdown("### 📜 Referência: Texto do Estatuto Anterior")
+    texto_ant = artigo.get("texto_antigo", "").strip()
+    if not texto_ant:
+        texto_ant = "Sem correspondência direta com o estatuto anterior"
+    st.markdown(f"""
+        <div style="color: #7A7A7A; background-color: #F9F9F9; padding: 15px; border-left: 5px solid #CCCCCC; border-radius: 4px; font-size: 15px; line-height: 1.5;">
+            <i>{texto_ant.replace('\n', '<br>')}</i>
+        </div>
+    """, unsafe_allow_html=True)
+
+# --- TELA: TRANSICAO / FIM DE CAPITULO ---
+elif st.session_state.passo == "fim_capitulo":
+    st.balloons()
+    st.title("✨ Capítulo Concluído!")
+    cap = st.session_state.capitulo_concluido
+    st.markdown(f"Você concluiu a análise do **{cap}**!")
+    
+    # Exibe as notas do capítulo
+    notas = NOTAS_FIM_CAPITULO.get(cap, [])
+    if notas:
+        st.markdown("### 💡 Resumo das principais alterações deste capítulo:")
+        for nota in notas:
+            st.info(nota)
+    
+    st.write("---")
+    
+    col_nav1, col_nav2 = st.columns(2)
+    with col_nav1:
+        if st.button("⬅️ Voltar e Corrigir Último Artigo", use_container_width=True):
+            # Volta para a revisão do último artigo analisado
+            st.session_state.passo = "revisao"
+            st.rerun()
+            
+    with col_nav2:
+        btn_label = "Avançar para o Próximo Capítulo ➡️" if st.session_state.proximo_artigo_indice is not None else "Concluir Revisão e Finalizar ➡️"
+        if st.button(btn_label, use_container_width=True, type="primary"):
+            if st.session_state.proximo_artigo_indice is not None:
+                st.session_state.artigo_atual = st.session_state.proximo_artigo_indice
+                st.session_state.passo = "revisao"
+            else:
+                st.session_state.artigo_atual = 0
+                st.session_state.passo = "obrigado"
+            st.session_state.capitulo_concluido = None
+            st.session_state.proximo_artigo_indice = None
+            st.rerun()
 
 # --- TELA 3: AGRADECIMENTO ---
 elif st.session_state.passo == "obrigado":
