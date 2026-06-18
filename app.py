@@ -14,8 +14,6 @@ st.set_page_config(page_title="Revisão Estatuto AMABRE", page_icon="📜", layo
 # --- CONEXÃO COM O TURSO ---
 # Configurar os segredos no .streamlit/secrets.toml ou nas variáveis de ambiente do deployment
 TURSO_URL = st.secrets.get("TURSO_URL", "")
-if TURSO_URL.startswith("libsql://"):
-    TURSO_URL = TURSO_URL.replace("libsql://", "https://", 1)
 TURSO_AUTH_TOKEN = st.secrets.get("TURSO_AUTH_TOKEN", "")
 
 def get_turso_client():
@@ -190,6 +188,15 @@ elif st.session_state.passo == "revisao":
         if st.button("⏭️ Pular Item", key=f"jmp_{indice}", use_container_width=True):
             voto_selecionado = "Pulei"
 
+    # Botão para voltar ao artigo anterior (exibido a partir do segundo artigo)
+    if indice > 0:
+        st.write("")
+        if st.button("⬅️ Voltar ao Artigo Anterior", key=f"back_{indice}", use_container_width=True):
+            st.session_state.artigo_atual -= 1
+            if "sugestao_ativa" in st.session_state:
+                del st.session_state.sugestao_ativa
+            st.rerun()
+
     # Se clicar em Mudar Algo, abre painel de feedback detalhado
     if voto_selecionado == "Sugerir Alteração" or "sugestao_ativa" in st.session_state:
         st.session_state.sugestao_ativa = True
@@ -204,8 +211,11 @@ elif st.session_state.passo == "revisao":
             # Processa o áudio binário gravado e joga na nuvem
             audio_url = upload_audio_to_cloud(audio_gravado['bytes'])
             
-            # Envia para o Turso
+            # Remove voto anterior do mesmo artigo para evitar duplicatas
             client = get_turso_client()
+            client.execute("DELETE FROM respostas WHERE usuario_id = ? AND artigo_id = ?", (st.session_state.usuario_id, artigo['id']))
+            
+            # Envia o novo voto para o Turso
             client.execute(
                 "INSERT INTO respostas (usuario_id, artigo_id, titulo_artigo, voto, comentario, audio_url) VALUES (?, ?, ?, ?, ?, ?)",
                 (st.session_state.usuario_id, artigo['id'], artigo['titulo'], "Rejeitado/Alterar", "Enviado por Áudio", audio_url)
@@ -219,6 +229,10 @@ elif st.session_state.passo == "revisao":
             
         if st.button("Enviar Sugestão por Texto ➡️", key=f"env_txt_{indice}", type="primary"):
             client = get_turso_client()
+            # Remove voto anterior do mesmo artigo para evitar duplicatas
+            client.execute("DELETE FROM respostas WHERE usuario_id = ? AND artigo_id = ?", (st.session_state.usuario_id, artigo['id']))
+            
+            # Envia o novo voto para o Turso
             client.execute(
                 "INSERT INTO respostas (usuario_id, artigo_id, titulo_artigo, voto, comentario, audio_url) VALUES (?, ?, ?, ?, ?, ?)",
                 (st.session_state.usuario_id, artigo['id'], artigo['titulo'], "Rejeitado/Alterar", comentario_texto, None)
@@ -230,6 +244,10 @@ elif st.session_state.passo == "revisao":
 
     elif voto_selecionado in ["Concordo", "Pulei"]:
         client = get_turso_client()
+        # Remove voto anterior do mesmo artigo para evitar duplicatas
+        client.execute("DELETE FROM respostas WHERE usuario_id = ? AND artigo_id = ?", (st.session_state.usuario_id, artigo['id']))
+        
+        # Envia o novo voto para o Turso
         client.execute(
             "INSERT INTO respostas (usuario_id, artigo_id, titulo_artigo, voto, comentario, audio_url) VALUES (?, ?, ?, ?, ?, ?)",
             (st.session_state.usuario_id, artigo['id'], artigo['titulo'], voto_selecionado, "", None)
