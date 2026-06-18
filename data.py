@@ -19,7 +19,7 @@ ARTIGOS_ESTATUTO = [
         "id": 3,
         "capitulo": "CAPÍTULO 1º - DA DENOMINAÇÃO, SEDE, DURAÇÃO, FINALIDADE E EXTINÇÃO",
         "titulo": "Artigo 3º - Da Extinção e Destino do Patrimônio",
-        "texto": "A Associação de Moradores e Amigos do Bairro Bom Retiro poderá ser extinta por decision tomada em Assembleia Geral, previamente convocada com 30 (trinta) dias de antecedência e sob aprovação de 2/3 (dois terços) dos membros presentes na Assembleia Geral.\n\n**Parágrafo Único - Do Destino do Patrimônio**\n\nNa extinção, o seu patrimônio será destinado a favor da comunidade que abrange esta Associação, sendo vedada a distribuição do patrimônio entre os associados.",
+        "texto": "A Associação de Moradores e Amigos do Bairro Bom Retiro poderá ser extinta por decisão tomada em Assembleia Geral, previamente convocada com 30 (trinta) dias de antecedência e sob aprovação de 2/3 (dois terços) dos membros presentes na Assembleia Geral.\n\n**Parágrafo Único - Do Destino do Patrimônio**\n\nNa extinção, o seu patrimônio será destinado a favor da comunidade que abrange esta Associação, sendo vedada a distribuição do patrimônio entre os associados.",
         "texto_antigo": "A Associação de Moradores e Amigos do Bairro Bom Retiro poderá ser extinta por decisão tomada em assembléia Geral, previamente convocada com 30 (trinta) dias de antecedência e sob aprovação unânime da Diretoria e de 2/3 (dois terços) dos membros presentes na Assembléia Geral. na extinção o seu patrimônio a favor da comunidade que abrange esta Associação."
     },
     {

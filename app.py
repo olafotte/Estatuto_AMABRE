@@ -93,6 +93,9 @@ def gerar_track_changes(texto_antigo, texto_novo):
     if not texto_antigo:
         return f"<span style='color: #155724; background-color: #d4edda; padding: 2px 6px; border-radius: 4px; font-weight: bold;'>[Novo Artigo Inédito]</span><br><br>{texto_novo}"
         
+    if texto_antigo == texto_novo:
+        return "Texto não alterado"
+        
     palavras_antigas = texto_antigo.split()
     palavras_novas = texto_novo.split()
     
