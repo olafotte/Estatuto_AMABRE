@@ -1,0 +1,21 @@
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+env/
+
+# Configurações locais do Streamlit (segredos e tokens)
+.streamlit/secrets.toml
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Arquivos temporários e logs locais
+*.log
+scratch/
+test_*.py
+create_tables.py
