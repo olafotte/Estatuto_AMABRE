@@ -90,21 +90,21 @@ ARTIGOS_ESTATUTO = [
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 13º - Atribuições do 1º e 2º Vices-Presidentes",
         "texto": "Ao 1º e 2º Vices-Presidentes compete:\n\na) Substituir o Presidente em seus impedimentos;\n\nb) Exercer as funções que lhe forem atribuídas.",
-        "texto_antigo": "Ao 1º e 2º Vices - Presidentes compete:\n\na Substituir o Presidente em seus impedimentos e\n\b- Exercer as funções que lhe forem atribuídas."
+        "texto_antigo": "Ao 1º e 2º Vices - Presidentes compete:\n\na Substituir o Presidente em seus impedimentos e\n\nb- Exercer as funções que lhe forem atribuídas."
     },
     {
         "id": 14,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 14º - Atribuições do 1º Secretário",
         "texto": "Ao 1º Secretário compete:\n\na) Receber e Expedir correspondência;\n\nb) Arquivar toda a documentação da Associação;\n\nc) Redigir, ler e assinar, com o presidente, todas as atas de reuniões da Diretoria e das Assembleias de associados.",
-        "texto_antigo": "Ao 1° Secretário compete:\n\na - Receber e Expedir correspondência\n\b- Arquivar toda a documentação da Associação\n\nc - Redigir, ler e assinar, com o presidente, todas as atas de reuniões da Diretoria e das Assembléias de associados."
+        "texto_antigo": "Ao 1° Secretário compete:\n\na - Receber e Expedir correspondência\n\nb- Arquivar toda a documentação da Associação\n\nc - Redigir, ler e assinar, com o presidente, todas as atas de reuniões da Diretoria e das Assembléias de associados."
     },
     {
         "id": 15,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 15º - Atribuições do 2º Secretário",
         "texto": "Ao 2º Secretário compete:\n\na) Substituir o 1º Secretário em seus impedimentos;\n\nb) Exercer as funções que lhe forem atribuídas.",
-        "texto_antigo": "Ao 2º Secretário compete:\n\na - Substituir o 1° Secretário em seus impedimentos e\n\b- Exercer as funções que lhe forem atribuídas."
+        "texto_antigo": "Ao 2º Secretário compete:\n\na - Substituir o 1° Secretário em seus impedimentos e\n\nb- Exercer as funções que lhe forem atribuídas."
     },
     {
         "id": 16,
