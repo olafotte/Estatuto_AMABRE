@@ -2,6 +2,8 @@ import streamlit as st
 from data import ARTIGOS_ESTATUTO, RUAS_BOM_RETIRO, NOTAS_FIM_CAPITULO
 import os
 import difflib
+import unicodedata
+from datetime import datetime
 # pyrefly: ignore [missing-import]
 from libsql_client import create_client_sync
 # pyrefly: ignore [missing-import]
@@ -38,7 +40,7 @@ def get_supabase_client():
 
 
 # --- FUNÇÃO PARA SALVAR ÁUDIO NA NUVEM ---
-def upload_audio_to_cloud(audio_bytes):
+def upload_audio_to_cloud(audio_bytes, filename=None):
     """
     Envia o áudio gravado em bytes para o Supabase Storage Bucket 'audios'.
     Retorna a URL pública do arquivo enviado ou uma URL mock caso o Supabase não esteja configurado.
@@ -46,14 +48,16 @@ def upload_audio_to_cloud(audio_bytes):
     if audio_bytes is None:
         return None
     
+    if not filename:
+        filename = f"audio_{os.urandom(8).hex()}.wav"
+        
     supabase = get_supabase_client()
     if supabase is None:
         st.warning("⚠️ Supabase não configurado. Usando link simulado para desenvolvimento local.")
-        url_publica = f"https://armazenamento-nuvem.com/amabre/audio_{os.urandom(4).hex()}.wav"
+        url_publica = f"https://armazenamento-nuvem.com/amabre/{filename}"
         return url_publica
         
     try:
-        filename = f"audio_{os.urandom(8).hex()}.wav"
         bucket_name = "audios"
         
         # Upload do áudio
@@ -277,8 +281,16 @@ elif st.session_state.passo == "revisao":
         audio_gravado = mic_recorder(start_prompt="🔴 Iniciar Gravação", stop_prompt="⏹️ Parar e Enviar", key=f"audio_{indice}")
         
         if audio_gravado:
+            # Nome baseado no primeiro nome da pessoa seguido por numero do artigo e timestamp yyyy-mm-dd hh-mm
+            primeiro_nome = st.session_state.usuario_nome.split()[0] if st.session_state.usuario_nome else "usuario"
+            primeiro_nome_limpo = "".join(c for c in unicodedata.normalize('NFD', primeiro_nome) if unicodedata.category(c) != 'Mn')
+            primeiro_nome_limpo = "".join(c for c in primeiro_nome_limpo if c.isalnum()).lower()
+            
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
+            filename = f"{primeiro_nome_limpo}_artigo_{artigo['id']}_{timestamp}.wav"
+            
             # Processa o áudio binário gravado e joga na nuvem
-            audio_url = upload_audio_to_cloud(audio_gravado['bytes'])
+            audio_url = upload_audio_to_cloud(audio_gravado['bytes'], filename=filename)
             
             # Remove voto anterior do mesmo artigo para evitar duplicatas
             client = get_turso_client()
