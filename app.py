@@ -1,6 +1,7 @@
 import streamlit as st
 from data import ARTIGOS_ESTATUTO, RUAS_BOM_RETIRO, NOTAS_FIM_CAPITULO
 import os
+import difflib
 # pyrefly: ignore [missing-import]
 from libsql_client import create_client_sync
 # pyrefly: ignore [missing-import]
@@ -83,6 +84,37 @@ def processar_avanco(indice, artigo, total_artigos, total_no_capitulo, posicao_n
         else:
             st.session_state.artigo_atual = 0
             st.session_state.passo = "obrigado"
+
+# --- FUNÇÃO PARA COMPARAÇÃO TEXTUAL (TRACK CHANGES) ---
+def gerar_track_changes(texto_antigo, texto_novo):
+    texto_antigo = (texto_antigo or "").strip()
+    texto_novo = (texto_novo or "").strip()
+    
+    if not texto_antigo:
+        return f"<span style='color: #155724; background-color: #d4edda; padding: 2px 6px; border-radius: 4px; font-weight: bold;'>[Novo Artigo Inédito]</span><br><br>{texto_novo}"
+        
+    palavras_antigas = texto_antigo.split()
+    palavras_novas = texto_novo.split()
+    
+    matcher = difflib.SequenceMatcher(None, palavras_antigas, palavras_novas)
+    html_out = []
+    
+    for op, i1, i2, j1, j2 in matcher.get_opcodes():
+        if op == 'equal':
+            html_out.append(" ".join(palavras_antigas[i1:i2]))
+        elif op == 'replace':
+            removido = " ".join(palavras_antigas[i1:i2])
+            adicionado = " ".join(palavras_novas[j1:j2])
+            html_out.append(f"<span style='background-color: #f8d7da; color: #721c24; text-decoration: line-through; padding: 1px 3px; border-radius: 2px;'>{removido}</span>")
+            html_out.append(f"<span style='background-color: #d4edda; color: #155724; padding: 1px 3px; border-radius: 2px;'>{adicionado}</span>")
+        elif op == 'delete':
+            removido = " ".join(palavras_antigas[i1:i2])
+            html_out.append(f"<span style='background-color: #f8d7da; color: #721c24; text-decoration: line-through; padding: 1px 3px; border-radius: 2px;'>{removido}</span>")
+        elif op == 'insert':
+            adicionado = " ".join(palavras_novas[j1:j2])
+            html_out.append(f"<span style='background-color: #d4edda; color: #155724; padding: 1px 3px; border-radius: 2px;'>{adicionado}</span>")
+            
+    return " ".join(html_out).replace("\n", "<br>")
 
 # --- INICIALIZAÇÃO DO ESTADO DE SESSÃO ---
 if "passo" not in st.session_state:
@@ -197,6 +229,16 @@ elif st.session_state.passo == "revisao":
             <p class="texto-estatuto">{artigo['texto']}</p>
         </div>
     """, unsafe_allow_html=True)
+    
+    # Painel comparativo (Track Changes)
+    texto_ant = artigo.get("texto_antigo", "").strip()
+    with st.expander("🔍 Mostrar Comparativo (Track Changes / O que mudou)"):
+        diff_html = gerar_track_changes(texto_ant, artigo['texto'])
+        st.markdown(f"""
+            <div style="background-color: #FFFFFF; border: 1px solid #E0E0E0; padding: 15px; border-radius: 4px; font-size: 16px; line-height: 1.6; color: #333333; overflow-x: auto;">
+                {diff_html}
+            </div>
+        """, unsafe_allow_html=True)
     
     st.markdown("### O que você acha desta regra?")
     col_b1, col_b2, col_b3 = st.columns(3)

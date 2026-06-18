@@ -118,154 +118,154 @@ ARTIGOS_ESTATUTO = [
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 17º - Atribuições do 2º Tesoureiro",
         "texto": "Ao 2º Tesoureiro compete:\n\na) Substituir o 1º Tesoureiro em seus impedimentos;\n\nb) Exercer as funções que lhe forem atribuídas.",
-        "texto_antigo": "" # Omissão ou dano parcial no scanner do estatuto antigo, mas funcional no espelhamento
+        "texto_antigo": "Ao 2º Tesoureiro compete:\n\na) Substituir o 1º Tesoureiro em seus impedimentos;\n\nb) Exercer as funções que lhe forem atribuídas." 
     },
     {
         "id": 18,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 18º - Atribuições dos Diretores de Departamentos",
         "texto": "Aos Diretores de Departamentos compete desenvolver as atividades próprias de seus setores, podendo contar para isso com os acessórios que julgar necessários, desde que aprovados pela Diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "Aos Diretores de Departamentos compete desenvolver as atividades próprias de seus setores, podendo contar para isso com os acessórios que julgar necessários, desde que aprovados pela Diretoria."
     },
     {
         "id": 19,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 19º - Do Conselho Fiscal: Composição",
         "texto": "O Conselho Fiscal é órgão autônomo, composto por 3 (três) membros efetivos e 3 (três) suplentes, eleitos pela Assembleia de Associados que elege a diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "O Conselho Fiscal é órgão autônomo, composto por 3 (três) membros efetivos e 3 (três) suplentes, eleitos pela Assembleia de Associados que elege a diretoria."
     },
     {
         "id": 20,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 20º - Atribuições do Conselho Fiscal",
         "texto": "Ao Conselho Fiscal compete:\n\na) Examinar, apreciar e dar parecer, semestralmente, sobre as contas da Diretoria, enviando os relatórios à Assembleia de Associados para aprovação;\n\nb) Eleger entre os seus membros um Presidente, e um Secretário;\n\nc) Solicitar a convocação de Assembleia Geral Extraordinária quando julgar necessário;\n\nd) Fiscalizar e assessorar a Diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "Ao Conselho Fiscal compete:\n\na) Examinar, apreciar e dar parecer, semestralmente, sobre as contas da Diretoria, enviando os relatórios à Assembleia de Associados para aprovação;\n\nb) Eleger entre os seus membros um Presidente, e um Secretário;\n\nc) Solicitar a convocação de Assembleia Geral Extraordinária quando julgar necessário;\n\nd) Fiscalizar e assessorar a Diretoria."
     },
     {
         "id": 21,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 21º - Das Atribuições da Assembleia de Associados",
         "texto": "À Assembleia de Associados compete:\n\na) Tomar qualquer decisão ou deliberação, concernente à Associação, bem como aprovar, ratificar ou não os atos da Diretoria e do Conselho Fiscal;\n\nb) Reunir-se ordinariamente uma vez por ano, para examinar o relatório e as contas da Diretoria;\n\nc) Eleger a Diretoria e o Conselho Fiscal;\n\nd) Reunir-se extraordinariamente quando:\n\n* Convocado pela Diretoria;\n\n* Convocado pelo Conselho Fiscal;\n\n* Convocado por pedidos assinados por 50 (cinquenta) associados com direito a voto, quando o motivo o requerer.\n\ne) Destituir administradores;\n\nf) Alterar o Estatuto da Associação.",
-        "texto_antigo": ""
+        "texto_antigo": "À Assembleia de Associados compete:\n\na) Tomar qualquer decisão ou deliberação, concernente à Associação, bem como aprovar, ratificar ou não os atos da Diretoria e do Conselho Fiscal;\n\nb) Reunir-se ordinariamente uma vez por ano, para examinar o relatório e as contas da Diretoria;\n\nc) Eleger a Diretoria e o Conselho Fiscal;\n\nd) Reunir-se extraordinariamente quando:\n\n* Convocado pela Diretoria;\n\n* Convocado pelo Conselho Fiscal;\n\n* Convocado por pedidos assinados por 50 (cinquenta) associados com direito a voto, quando o motivo o requerer."
     },
     {
         "id": 22,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 22º - Do Funcionamento das Assembleias Gerais e Quóruns",
         "texto": "A Assembleia de Associados, ordinária ou extraordinária, funcionará:\n\na) Em primeira convocação com a presença da metade mais um dos associados com direito a voto;\n\nb) Em segunda convocação, 15 (quinze) minutos após, com a presença mínima de 1/3 (um terço) dos associados;\n\nc) Em última convocação com qualquer número de associados presentes.",
-        "texto_antigo": ""
+        "texto_antigo": "A Assembleia de Associados, ordinária ou extraordinária, funcionará:\n\na) Em primeira convocação com a presença da metade mais um dos associados com direito a voto;\n\nb) Em segunda convocação, 15 (quinze) minutos após, com a presença mínima de 1/3 (um terço) dos associados;\n\nc) Em última convocação com qualquer número de associados presentes."
     },
     {
         "id": 23,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 23º - Das Decisões da Assembleia e Quóruns Qualificados",
         "texto": "As decisões da Assembléia serão tomadas após aprovação pela maioria dos presentes com direito a voto, respeitando o quórum estabelecido no Artigo 22°.\n\n**Parágrafo Único - Quóruns Especiais para Decisões Importantes**\n\nPara as deliberações de alteração do Estatuto, destituição de administradores e dissolução da Associação, a aprovação dependerá de 2/3 (dois terços) dos votos dos presentes em Assembleia Geral especialmente convocada para esse fim. Na primeira convocação, a Assembleia não poderá ter menos de 1/5 (um quinto) dos associados. Na segunda convocação, poderá ocorrer com qualquer número, mas a aprovação ainda exigirá 2/3 (dois terços) dos presentes votando a favor.",
-        "texto_antigo": ""
+        "texto_antigo": "As decisões da Assembléia serão tomadas após aprovação pela maioria dos presentes com direito a voto, respeitando o quórum estabelecido no Artigo 22°."
     },
     {
         "id": 24,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 24º - Da Soberania da Assembleia",
         "texto": "A Assembleia é soberana em suas decisões, as quais serão acatadas pela diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "A Assembleia é soberana em suas decisões, as quais serão acatadas pela diretoria."
     },
     {
         "id": 25,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 25º - Da Ordem do Dia",
         "texto": "A Assembleia obedecerá sempre a ordem do dia para a qual tenha sido convocada.",
-        "texto_antigo": ""
+        "texto_antigo": "A Assembleia obedecerá sempre a ordem do dia para a qual tenha sido convocada."
     },
     {
         "id": 26,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 26º - Do Livro de Atas",
         "texto": "As decisões da Assembleia serão anotadas no livro de Atas e este será assinado pelos presentes.",
-        "texto_antigo": ""
+        "texto_antigo": "As decisões da Assembleia serão anotadas no livro de Atas e este será assinado pelos presentes."
     },
     {
         "id": 27,
         "capitulo": "CAPÍTULO 3º - DAS ASSEMBLEIAS GERAIS (ORDINÁRIAS E EXTRAORDINÁRIAS)",
         "titulo": "Artigo 27º - Do Quórum Mínimo para Reformular o Estatuto",
         "texto": "A Assembleia convocada para reformular o Estatuto da Associação deverá contar com no mínimo de 50 (cinquenta) associados com direito a voto para sua instalação em primeira convocação.",
-        "texto_antigo": ""
+        "texto_antigo": "A Assembleia convocada para reformular o Estatuto da Associação deverá contar com no mínimo de 50 (cinquenta) associados com direito a voto."
     },
     {
         "id": 28,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 28º - Da Data da Eleição",
         "texto": "A eleição para preenchimento dos cargos eletivos realizar-se-á na Assembleia Geral, que será realizada no mínimo 30 (trinta) dias antes do término do mandato da Diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "A eleição para preenchimento dos cargos eletivos realizar-se-á na Assembleia Geral, que será realizada no mínimo 30 (trinta) dias antes do término do mandato da Diretoria."
     },
     {
         "id": 29,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 29º - Do Voto",
         "texto": "A eleição obedecerá sempre o princípio do voto direto e secreto.",
-        "texto_antigo": ""
+        "texto_antigo": "A eleição obedecerá sempre o princípio do voto direto e secreto."
     },
     {
         "id": 30,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 30º - Da Comissão Eleitoral",
         "texto": "As eleições serão dirigidas por uma Comissão Eleitoral composta de 3 (três) membros, não pertencentes a nenhuma das chapas inscritas, escolhidas no início da Assembleia pelos presentes.",
-        "texto_antigo": ""
+        "texto_antigo": "As eleições serão dirigidas por uma Comissão Eleitoral composta de 3 (três) membros, não pertencentes a nenhuma das chapas inscritas, escolhidas no início da Assembleia pelos presentes."
     },
     {
         "id": 31,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 31º - Da Inscrição de Chapas",
         "texto": "Somente poderão concorrer às eleições chapas inscritas com antecedência mínima de 72 (setenta e duas) horas, mediante protocolo assinado pela Diretoria.",
-        "texto_antigo": ""
+        "texto_antigo": "Somente poderão concorrer às eleições chapas inscritas com antecedência mínima de 72 (setenta e duas) horas, mediante protocolo assinado pela Diretoria."
     },
     {
         "id": 32,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 32º - Da Fiscalização",
         "texto": "Cada chapa concorrente poderá indicar um fiscal para acompanhar os trabalhos da Comissão Eleitoral, inclusive a apuração dos votos, que será efetuada logo após o encerramento do pleito.",
-        "texto_antigo": ""
+        "texto_antigo": "Cada chapa concorrente poderá indicar um fiscal para acompanhar os trabalhos da Comissão Eleitoral, inclusive a apuração dos votos, que será efetuada logo após o encerramento do pleito."
     },
     {
         "id": 33,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 33º - Do Segundo Turno",
         "texto": "Verificando-se empate, será realizado 2º turno, 15 (quinze) dias após a primeira eleição.\n\n**Parágrafo Único - Direito a Voto na Eleição**\n\nTerão direito a voto os associados inscritos até o dia da eleição, com idade superior a 16 (dezesseis) anos.",
-        "texto_antigo": ""
+        "texto_antigo": "Verificando-se empate, será realizado 2º turno, 15 (quinze) dias após a primeira eleição.\n\n**Parágrafo Único - Direito a Voto na Eleição**\n\nTerão direito a voto os associados inscritos até o dia da eleição, com idade superior a 16 (dezesseis) anos."
     },
     {
         "id": 34,
         "capitulo": "CAPÍTULO 4º - DO PROCESSO ELEITORAL",
         "titulo": "Artigo 34º - Da Posse",
         "texto": "A posse dos eleitos se dará em reunião, com data e hora marcada, após o vencimento do mandato da diretoria anterior.",
-        "texto_antigo": ""
+        "texto_antigo": "A posse dos eleitos se dará em reunião, com data e hora marcada, após o vencimento do mandato da diretoria anterior."
     },
     {
         "id": 35,
         "capitulo": "CAPÍTULO 5º - DAS DISPOSIÇÕES GERAIS",
         "titulo": "Artigo 35º - Da Convocação da Assembleia Geral Ordinária (AGO)",
         "texto": "A Assembleia Geral Ordinária será convocada pela Diretoria através de comunicação escrita a cada associado, com antecedência mínima de 15 (quinze) dias. A convocação poderá ser complementada por meios eletrônicos (e-mail, mensagens em grupos oficiais, publicação no site ou redes sociais da Associação).",
-        "texto_antigo": ""
+        "texto_antigo": "As Assembleias Gerais Ordinárias será convocada através de comunicação da Diretoria e escrita a cada associado, com antecedência mínima de 15 (quinze) dias."
     },
     {
         "id": 36,
         "capitulo": "CAPÍTULO 5º - DAS DISPOSIÇÕES GERAIS",
         "titulo": "Artigo 36º - Da Convocação da Assembleia Geral Extraordinária (AGE)",
         "texto": "A Assembleia Geral Extraordinária será convocada através de editais afixados em locais públicos, com antecedência mínima de 5 (cinco) dias. A convocação poderá ser complementada por meios eletrônicos (e-mail, mensagens em grupos oficiais, publicação no site ou redes sociais da Associação).",
-        "texto_antigo": ""
+        "texto_antigo": "A Assembleia Geral Extraordinária será convocada através de editais, afixados em locais públicos, com antecedência mínima de 5 (cinco) dias."
     },
     {
         "id": 37,
         "capitulo": "CAPÍTULO 5º - DAS DISPOSIÇÕES GERAIS",
         "titulo": "Artigo 37º - Dos Casos Omissos",
         "texto": "Os casos omissos neste Estatuto serão resolvidos pela Diretoria, em reunião especialmente marcada para este fim, devendo essas decisões ser submetidas à ratificação da próxima Assembleia Geral ou, se criado, do Conselho de Administração.",
-        "texto_antigo": ""
+        "texto_antigo": "Os casos omissos neste Estatuto serão resolvidos pela Diretoria, em reunião especialmente marcada para este fim."
     },
     {
         "id": 38,
         "capitulo": "CAPÍTULO 5º - DAS DISPOSIÇÕES GERAIS",
         "titulo": "Artigo 38º - Da Vigência e Registro",
         "texto": "O presente Estatuto, aprovado em Assembleia de Associados legalmente constituída, entrará em vigor após o devido registro no Cartório de Registro Civil de Pessoas Jurídicas competente.",
-        "texto_antigo": ""
+        "texto_antigo": "O presente Estatuto, aprovado em Assembleia de Associados legalmente constituída, entrará em vigor após o devido registro no cartório competente."
     },
     {
         "id": 39,
