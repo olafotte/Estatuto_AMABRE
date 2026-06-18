@@ -13,27 +13,30 @@ st.set_page_config(page_title="Revisão Estatuto AMABRE", page_icon="📜", layo
 
 # --- CONEXÃO COM O TURSO ---
 # Configurar os segredos no .streamlit/secrets.toml ou nas variáveis de ambiente do deployment
-TURSO_URL = st.secrets.get("TURSO_URL", "https://amabre-db-olafotte.aws-us-east-1.turso.io")
+TURSO_URL = st.secrets.get("TURSO_URL", "")
 if TURSO_URL.startswith("libsql://"):
     TURSO_URL = TURSO_URL.replace("libsql://", "https://", 1)
-TURSO_AUTH_TOKEN = st.secrets.get("TURSO_AUTH_TOKEN", "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODE3ODQ4MTcsImlkIjoiMDE5ZWRhYTYtODQwMS03YmRlLWFhYWUtNjllZWRhZmQ1ZTk5IiwicmlkIjoiZjhmOGM5MzUtYWIwNC00Y2UzLWE5NTktYjZlY2VmZjBkMTk3In0.GyWiH_93swunKUCyuqarjP0dvM4EccAzsJl4SstoFZnBTR4r05AHsKcAB0L676aKn8f1I7hT-ZonCVHryVRFCA")
-
+TURSO_AUTH_TOKEN = st.secrets.get("TURSO_AUTH_TOKEN", "")
 
 def get_turso_client():
+    if not TURSO_URL or not TURSO_AUTH_TOKEN:
+        st.error("⚠️ Erro: Configurações do banco de dados Turso não encontradas nos segredos (.streamlit/secrets.toml).")
+        raise ValueError("Turso credentials missing.")
     return create_client_sync(url=TURSO_URL, auth_token=TURSO_AUTH_TOKEN)
 
 # --- CONEXÃO COM O SUPABASE ---
-SUPABASE_URL = st.secrets.get("SUPABASE_URL", "https://heehxkvwazudjvnzzies.supabase.co")
+SUPABASE_URL = st.secrets.get("SUPABASE_URL", "")
 SUPABASE_KEY = st.secrets.get("SUPABASE_KEY", "")
 
 def get_supabase_client():
-    if not SUPABASE_KEY or SUPABASE_KEY == "INSIRA_AQUI_A_SUA_SUPABASE_KEY_ANON_OU_SERVICE_ROLE":
+    if not SUPABASE_URL or not SUPABASE_KEY or SUPABASE_KEY == "INSIRA_AQUI_A_SUA_SUPABASE_KEY_ANON_OU_SERVICE_ROLE":
         return None
     try:
         return create_client(SUPABASE_URL, SUPABASE_KEY)
     except Exception as e:
         st.error(f"Erro ao inicializar cliente Supabase: {e}")
         return None
+
 
 # --- FUNÇÃO PARA SALVAR ÁUDIO NA NUVEM ---
 def upload_audio_to_cloud(audio_bytes):
