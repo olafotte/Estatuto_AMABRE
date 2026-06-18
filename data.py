@@ -51,13 +51,13 @@ ARTIGOS_ESTATUTO = [
         "id": 9,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 9º - Dos Órgãos de Administração",
-        "texto": "A Associação será administrada pelos seguintes órgãos: 1\n\n\n\na) Diretoria;  \n\nb) Conselho Fiscal;  \n\nc) Assembleia de Associados.  \n\n**Parágrafo Primeiro \\- Do Mandato**\n\n\n\nO mandato da Diretoria e do Conselho Fiscal é de 2 (dois) anos, sendo permitida a reeleição de qualquer de seus membros por mais um mandato na mesma função. 1\n\n\n\n**Parágrafo Segundo \\- Da Não Remuneração**\n\n\n\nOs membros da Administração Geral não receberão qualquer remuneração decorrente da função ou cargo exercido a serviço da Associação."
+        "texto": "A Associação será administrada pelos seguintes órgãos: \n\n\n\na) Diretoria;  \n\nb) Conselho Fiscal;  \n\nc) Assembleia de Associados.  \n\n**Parágrafo Primeiro \\- Do Mandato**\n\n\n\nO mandato da Diretoria e do Conselho Fiscal é de 2 (dois) anos, sendo permitida a reeleição de qualquer de seus membros por mais um mandato na mesma função. 1\n\n\n\n**Parágrafo Segundo \\- Da Não Remuneração**\n\n\n\nOs membros da Administração Geral não receberão qualquer remuneração decorrente da função ou cargo exercido a serviço da Associação."
     },
     {
         "id": 10,
         "capitulo": "CAPÍTULO 2º - DA ADMINISTRAÇÃO GERAL",
         "titulo": "Artigo 10º - Da Composição da Diretoria",
-        "texto": "A Diretoria é o órgão que dirige, administra e representa a Associação e terá os seguintes membros, eleitos e nomeados: 1\n\n\n\na) Eleitos pela Assembleia de Associados:  \n\n\\* Presidente;  \n\n\\* Vice-Presidente;  \n\n\\* 1º Secretário;  \n\n\\* 2º Secretário;  \n\n\\* 1º Tesoureiro;  \n\n\\* 2º Tesoureiro.  \n\nb) De livre nomeação da Diretoria:  \n\n\\* Diretores de Departamentos.  \n\n**Parágrafo Primeiro \\- Direito a Voz e Voto na Diretoria**\n\n\n\nTodos os membros da Diretoria terão direito a voz e voto. 1\n\n\n\n**Parágrafo Segundo \\- Das Decisões da Diretoria**\n\n\n\nAs decisões da Diretoria deverão ser tomadas por maioria de votos, com presença mínima da metade mais um de seus membros, além do Presidente ou do substituto legal."
+        "texto": "A Diretoria é o órgão que dirige, administra e representa a Associação e terá os seguintes membros, eleitos e nomeados: \n\n\n\na) Eleitos pela Assembleia de Associados:  \n\n\\* Presidente;  \n\n\\* Vice-Presidente;  \n\n\\* 1º Secretário;  \n\n\\* 2º Secretário;  \n\n\\* 1º Tesoureiro;  \n\n\\* 2º Tesoureiro.  \n\nb) De livre nomeação da Diretoria:  \n\n\\* Diretores de Departamentos.  \n\n**Parágrafo Primeiro \\- Direito a Voz e Voto na Diretoria**\n\n\n\nTodos os membros da Diretoria terão direito a voz e voto. 1\n\n\n\n**Parágrafo Segundo \\- Das Decisões da Diretoria**\n\n\n\nAs decisões da Diretoria deverão ser tomadas por maioria de votos, com presença mínima da metade mais um de seus membros, além do Presidente ou do substituto legal."
     },
     {
         "id": 11,
