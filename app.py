@@ -169,8 +169,20 @@ if st.session_state.passo == "cadastro":
     nome = st.text_input("Seu Nome Completo:")
     rua = st.selectbox("Sua Rua no Bom Retiro:", ["Selecione sua rua..."] + RUAS_BOM_RETIRO)
     whatsapp = st.text_input("Seu WhatsApp (Opcional):")
-    
-    if st.button("Iniciar Avaliação ➡️", use_container_width=True, type="primary"):
+
+    # Consentimento LGPD
+    st.markdown("[Leia os Termos de Uso e a Política de Privacidade](TERMS.md)")
+    aceitou_termos = st.checkbox(
+        "Li e estou de acordo com os **Termos de Uso** e a **Política de Privacidade** (LGPD). "
+        "Declaro que consinto com o tratamento dos meus dados pessoais para as finalidades descritas."
+    )
+
+    if st.button(
+        "Iniciar Avaliação ➡️",
+        use_container_width=True,
+        type="primary",
+        disabled=not aceitou_termos,
+    ):
         if nome and rua != "Selecione sua rua...":
             try:
                 client = get_turso_client()
