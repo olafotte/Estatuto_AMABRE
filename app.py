@@ -38,6 +38,16 @@ def get_supabase_client():
         st.error(f"Erro ao inicializar cliente Supabase: {e}")
         return None
 
+def load_terms_text():
+    """Lê o arquivo TERMS.md e retorna seu conteúdo como texto."""
+    terms_path = os.path.join(os.path.dirname(__file__), "TERMS.md")
+    try:
+        with open(terms_path, "r", encoding="utf-8") as f:
+            return f.read()
+    except FileNotFoundError:
+        return "⚠️ Arquivo TERMS.md não encontrado. Por favor, verifique a raiz do projeto."
+    except Exception as e:
+        return f"⚠️ Erro ao ler TERMS.md: {e}"
 
 # --- FUNÇÃO PARA SALVAR ÁUDIO NA NUVEM ---
 def upload_audio_to_cloud(audio_bytes, filename=None):
@@ -171,7 +181,12 @@ if st.session_state.passo == "cadastro":
     whatsapp = st.text_input("Seu WhatsApp (Opcional):")
 
     # Consentimento LGPD
-    st.markdown("[Leia os Termos de Uso e a Política de Privacidade](TERMS.md)")
+    terms_text = load_terms_text()
+    with st.expander("Leia os Termos de Uso e a Política de Privacidade"):
+        st.markdown(terms_text)
+
+    st.markdown("Se não conseguir abrir os termos acima, por favor atualize a página ou entre em contato com o suporte.")
+
     aceitou_termos = st.checkbox(
         "Li e estou de acordo com os **Termos de Uso** e a **Política de Privacidade** (LGPD). "
         "Declaro que consinto com o tratamento dos meus dados pessoais para as finalidades descritas."
